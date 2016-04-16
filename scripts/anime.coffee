@@ -6,9 +6,11 @@ module.exports = (genos) ->
   BASE_URL = 'https://anilist.co/api'
   date = new Date
   month = date.getMonth() + 1
+  dayplusseven = date.getDate() + 7
   if month < 10
     month = "0" + month
   today = date.getFullYear()+'-'+month+'-'+date.getDate()
+  weekfromtoday = date.getFullYear()+'-'+month+'-'+dayplusseven
 
   genos.respond /anime today/i, (bot) ->
     currently = []
@@ -25,6 +27,9 @@ module.exports = (genos) ->
         for show in shows
           if show.airing != null
             if today == "#{show.airing.time}"[0..9]
+              currently.push show
+
+            if weekfromtoday == "#{show.airing.time}"[0..9]
               currently.push show
 
         bot.send "Today we have:"
