@@ -19,7 +19,7 @@ module.exports = (genos) ->
 
       auth = JSON.parse body
 
-      genos.http(BASE_URL+'/browse/anime?season=spring&year=2016&type=TV&airing_data=true&full_page=true&access_token='+auth.access_token)
+      genos.http(BASE_URL+'/browse/anime?season=summer&year=2016&type=TV&airing_data=true&full_page=true&access_token='+auth.access_token)
       .get() (err, res, body) ->
 
         shows = JSON.parse body
